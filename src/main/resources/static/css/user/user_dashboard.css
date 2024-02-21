@@ -1,0 +1,22 @@
+.profile{
+	width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin: 10px auto;
+    margin-left:-90px ;
+    border: 10px solid #ccc;
+    border-radius: 50%;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+
+}
+body{
+ background: #333;background: -webkit-linear-gradient(to right,#333,#67B26F);
+   background: linear-gradient(to right, #333,#4ca2cd);
+   }

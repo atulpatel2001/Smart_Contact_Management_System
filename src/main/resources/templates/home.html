@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{_layout::Layout(~{::body})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <title>Document</title>
+</head>
+<body>
+    <section class="homepage" id="home">
+        <div class="content">
+          <div class="text">
+            <h1>Smart Contact Manager</h1>
+            <p>
+              Welcome to our Smart Contact Manager! Streamline your contact management process and stay organized with our intuitive web application. Easily store, update, and access all your important contacts in one place.
+          </div>
+          <a id="action" href="#services">Get Start</a>
+        </div>
+      </section>
+
+      
+      <footer>
+        <div>
+          <span>Copyright © 2023 All Rights Reserved</span>
+          <span class="link">
+              <a th:href="@{/}">Home</a>
+              <a href="#contact">Contact</a>
+          </span>
+        </div>
+      </footer>
+
+
+                   <!-- css File -->
+   <link rel="stylesheet" th:href="@{/css/home.css}" />
+</body>
+</html>

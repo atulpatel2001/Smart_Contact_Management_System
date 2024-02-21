@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/user/_layout::Layout(~{::body})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+<section>
+<div class="mr-3">
+    <div>
+        <div>
+                <h3 class="my-3 text-center">Donate Us</h3>
+                <input id="amount_field" type="text" class="form-control my-2" placeholder="Enter Amount Hear"/>
+                <button
+                        class="btn btn-success btn-block"
+                        onclick="paymentStart()">
+                    <span class="nav-text"> Pay </span>
+                </button>
+    </div>
+    </div>
+    </div>
+                <input type="checkbox" id="click">
+                <label for="click">
+                    <i class="fab fa-facebook-messenger"></i>
+                    <i class="fas fa-times"></i>
+                </label>
+                <div class="wrapper">
+                    <div class="head-text">
+                        Let's chat? - Online
+                    </div>
+                    <div class="chat-box">
+                        <div class="desc-text">
+                            Please fill out the form below to start chatting with the next available agent.
+                        </div>
+                        <form action="#">
+                            <div class="field">
+                                <input type="text" placeholder="Your Name" required>
+                            </div>
+                            <div class="field">
+                                <input type="email" placeholder="Email Address" required>
+                            </div>
+                            <div class="field textarea">
+                                <textarea cols="30" rows="10" placeholder="Explain your queries.." required></textarea>
+                            </div>
+                            <div class="field">
+                                <button type="submit">Start Chat</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+    <link rel="stylesheet" th:href="@{/css/user/razorpay.css}"/>
+</section>
+</body>
+</html>

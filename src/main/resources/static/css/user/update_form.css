@@ -1,0 +1,8 @@
+#myImage{	
+	border-radius: 50%;
+	border:1px solid white;
+	display: none;
+	max-width: 200px;
+	max-height: 200px;
+	float: right;
+}

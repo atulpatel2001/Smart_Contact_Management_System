@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{_layout::Layout(~{::body})}">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+</head>
+<body>
+	<section class="h-100 bg-dark all">
+		<div class="container py-5 h-100">
+			<div
+				class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col">
+					<div class="card card-registration my-4">
+						<div class="row g-0">
+							<div class="col-xl-6 d-none d-xl-block">
+								<img th:src="@{/design-image/signup.webp}" alt="Sample photo"
+									class="img-fluid"
+									style="border-top-left-radius: 0.25rem; border-bottom-left-radius: 0.25rem;" />
+							</div>
+							<div class="col-xl-6">
+
+								<div class="card-body p-md-5 text-black">
+
+
+									<div class="text-center">
+										<img th:src="@{/design-image/signup-icon.png}" alt="icon"
+											style="width: 80px;">
+									</div>
+
+									<h3 class="mb-2 text-uppercase text-center">Register
+										Hear!!</h3>
+									<div class="container" th:if="${session.message}">
+										<div
+											th:classappend="${'alert-'+session.message.typeOfMessage}"
+											class="alert" role="alert">
+											<span th:text="${session.message.content}"> </span>
+										</div>
+										<th:block
+											th:text="${@sessionHelper.removeAttributeFromSession('message')}"></th:block>
+									</div>
+
+
+
+									<form novalidate="novalidate" th:action="@{/do_Register}"
+										method="post" th:object="${user}">
+
+										<!-- Name Field -->
+
+										<div class="form-outline">
+											<label class="form-label " for="form3Example8">Your
+												Name</label> <input type="text" id="form3Example8"
+												class="form-control form-control-lg"
+												placeholder="Enter hear" th:value="${user.name}" name="name"
+												required
+												th:classappend="${#fields.hasErrors('name') ? 'is-invalid':''}" />
+
+											<div th:each="error : ${#fields.errors('name')}"
+												th:text="${error}" class="invalid-feedback"></div>
+										</div>
+
+										<!-- Email Field -->
+										<div class="form-outline">
+											<label class="form-label" for="form3Example97">Your
+												Email ID</label> <input type="email" id="form3Example8"
+												class="form-control form-control-lg"
+												placeholder="Enter hear" th:value="${user.email}"
+												name="email" required
+												th:classappend="${#fields.hasErrors('email') ? 'is-invalid':''}" />
+											<div th:each="error : ${#fields.errors('email')}"
+												th:text="${error}" class="invalid-feedback"></div>
+										</div>
+
+										<!-- Password -->
+										<div class="form-outline mb-4">
+											<label class="form-label" for="form3Example97">Your
+												Password</label> <input type="password" id="form3Example97"
+												class="form-control form-control-lg"
+												placeholder="Enter hear" name="password" required
+												th:classappend="${#fields.hasErrors('password') ? 'is-invalid':''}" />
+											<div th:each="error : ${#fields.errors('password')}"
+												th:text="${error}" class="invalid-feedback"></div>
+										</div>
+
+										<!-- about field -->
+
+										<div class="form-group">
+											<textarea th:value="${user.about}" th:text="${user.about}"
+												placeholder="Enter Something Your Self" rows="10"
+												class="form-control form-control-lg" name="about"
+												th:classappend="${#fields.hasErrors('about') ? 'is-invalid':''}"></textarea>
+											<div th:each="error : ${#fields.errors('about')}"
+												th:text="${error}" class="invalid-feedback"></div>
+										</div>
+
+										<div class="form-check mb-2 text-center">
+											<input class="form-check-input" type="checkbox" value="true"
+												id="defaultCheck1" name="termAndCondition"
+												th:classappend="${#fields.hasErrors('termAndCondition') ? 'is-invalid':''}" />
+
+											<label class="form-check-label" for="defaultCheck1">
+												Accept Term And Condition. </label>
+											<div th:each="error : ${#fields.errors('termAndCondition')}"
+												th:text="${error}" class="invalid-feedback"></div>
+										</div>
+
+										<div class="container d-flex justify-content-center">
+											<button type="reset" class="btn btn-danger mr-2">Reset</button>
+											<button type="submit" class="btn  bg-all ms-2 text-white ">Submit</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+
+
+	<!-- css file -->
+	<link rel="stylesheet" th:href="@{/css/signup.css}" />
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{_layout::Layout(~{::body})}"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<section>
+    <div class="row justify-content-center wrapper" id="forgot-box">
+        <div class="col-lg-10 my-auto myShadow">
+            <div class="row">
+                <div class="col-lg-7 bg-white p-4">
+                    <div class="container" th:if="${session.message}">
+                        <div th:classappend="${'alert-'+session.message.typeOfMessage}" class="alert mr-3 text-center" role="alert" ><span th:text="${session.message.content}">
+				</span>
+                        </div>
+                        <th:block th:text="${@sessionHelper.removeAttributeFromSession('message')}"></th:block>
+                    </div>
+                    <h1 class="text-center font-weight-bold text-primary">Verify OTP </h1>
+                    <hr class="my-3" />
+                    <p class="lead text-center text-secondary">Already Send OTP in your Email so check mail and enter otp</p>
+                    <form action="#" th:action="@{/veryfieotp}" method="post" class="px-3" id="forgot-form">
+                        <div id="forgotAlert"></div>
+                        <div class="input-group input-group-lg form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text rounded-0"><i class="fa fa-key"></i></span>
+                            </div>
+                            <input type="text" id="femail" name="otp" class="form-control rounded-0" placeholder="Enter OTP" required />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" id="forgot-btn" value="Verify" class="btn btn-success btn-lg btn-block myBtn" />
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-5 d-flex flex-column justify-content-center myColor p-4 text-center">
+                    <h1 class="text-center font-weight-bold text-white">Reset Password!</h1>
+                    <hr class="my-4 bg-light myHr" />
+                    <a class="btn btn-outline-light btn-lg font-weight-bolder myLinkBtn align-self-center" id="back-link" th:href="@{/forgot-password}">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" th:href="@{/css/forgot_password_form.css}"/>
+</section>
+</body>
+</html>

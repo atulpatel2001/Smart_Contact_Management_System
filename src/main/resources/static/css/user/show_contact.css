@@ -1,0 +1,47 @@
+.my-profile{
+	width: 40px; 
+	height: 40px;
+	object-fit:cover;
+	border-radius: 50%;
+	border:1px solid black;
+}
+body{
+ background: #333;
+background: -webkit-linear-gradient(to right,#333,#67B26F);
+    background: linear-gradient(to right, #333,#4ca2cd);
+    }
+.go-profile{
+	color: black;
+}
+
+.go-profile a:hover
+{
+    color:black;
+    text-decoration:none;
+}
+
+.contactName:hover {
+
+    font-weight:bolder;
+    text-decoration:none;
+}
+
+.button-container {
+	display: flex;
+  }
+.btn{
+	margin-right:3px;
+	width: 60px;
+}
+
+.search-container{
+position:relative;
+}
+.search-result{
+position:absolute;
+width:100%;
+padding: 10px;
+border: 1px solid gray;
+display: none;
+}
+  

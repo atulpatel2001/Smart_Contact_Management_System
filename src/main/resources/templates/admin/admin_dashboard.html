@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{admin/_layout::Layout(~{::body})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section >
+        <div class="top">
+            <i class="fa fa-bars sidebar-toggle"></i>
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
+            </div>
+
+            <!--<img src="images/profile.jpg" alt="">-->
+        </div>
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-tachometer-fast-alt"></i>
+                    <span class="text">Dashboard</span>
+                </div>
+                <div class="boxes" >
+                    <div class="box box1">
+                        <i class="uil uil-user"></i>
+                        <span class="text">Total User</span>
+                        <span class="number" th:text="${numberOfUser}">50,120</span>
+                    </div>
+                    <div class="box box2">
+                        <i class="fa fa-address-card"  style='font-size:50px;'></i>
+                        <span class="text">Total Contact</span>
+                        <span class="number" th:text="${numberOfContact}">20,120</span>
+                    </div>
+                    <div class="box box3">
+                        <i class="fas fa-user-friends" style='font-size:50px;'></i>
+                        <span class="text">Total Member</span>
+                        <span class="number" th:text="${numberOfContact+numberOfUser}">10,120</span>
+                    </div>
+                </div>
+            </div>
+            <div class="activity">
+                <div class="title">
+                    <i class="uil uil-clock-three"></i>
+                    <span class="text">Recent Activity</span>
+                </div>
+
+<!--                <div class="activity-data" th:each="user:${users}">-->
+<!--                    <div class="data names">-->
+<!--                        <span class="data-title" >Name</span>-->
+<!--                        <span class="data-list" th:text="${user.name}"></span>-->
+<!--                    </div>-->
+<!--                    <div class="data email">-->
+<!--                        <span class="data-title">Email</span>-->
+<!--                        <span class="data-list" th:text="${user.email}"></span>-->
+
+<!--                    </div>-->
+<!--                    <div class="data joined">-->
+
+<!--                        <span class="data-list" th:text="${user.joinDate}"></span>-->
+
+<!--                    </div>-->
+<!--                    <div class="data type">-->
+<!--                        <span class="data-title">Type</span>-->
+<!--                        <span class="data-list">New</span>-->
+
+<!--                    </div>-->
+<!--                    <div class="data status">-->
+<!--                        <span class="data-title">Status</span>-->
+<!--                        <span class="data-list"  th:text="${isActive}"></span>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">NAME</th>
+                        <th scope="col">ISACTIVE</th>
+                        <th scope="col">JOINDATE</th>
+						<th scope="col">ROLE</th>
+                    </tr>
+                    </thead>
+                    <tbody th:each="user:${users}">
+                    <tr>
+                        <th scope="row" th:text="${'USER'+user.id}"></th>
+                        <td th:text="${user.name}">Mark</td>
+                        <td th:text="${user.isActive}">Otto</td>
+                        <td th:text="${user.joinDate}">@mdo</td>
+						<td th:text="${user.role}">@mdo</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

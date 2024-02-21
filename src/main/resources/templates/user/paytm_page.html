@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/user/_layout::Layout(~{::body})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+<body style="background:gray;">
+<section >
+
+    <div class="container">
+        <div class="row m-5">
+            <div class="col-md-6 offset-md-3">
+                <div class="card border-0 shadow">
+                    <div class="card-body">
+                        <h3 class="text-center">Paytm Gateway Payment System</h3>
+                        <div class="m-2">
+                            <label for="user_name">Your Name</label><input class="form-control" id="user_name" type="text">
+                        </div>
+                        <div class="m-2">
+                            <label for="phone_number">Phone Number</label><input class="form-control" id="phone_number" type="text">
+                        </div>
+                        <div class="m-2">
+                            <label for="amount">Amount</label><input class="form-control" id="amount" type="text">
+                        </div>
+                        <div class="container text-center">
+                            <button class="btn btn-primary btn-sum" onclick="doPayment()">Proccess to Pay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+</body>
+</html>

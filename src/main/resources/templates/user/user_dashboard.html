@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{/user/_layout::Layout(~{::body})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+<section>
+    <div class="card mr-3" style=" background: #333;background: -webkit-linear-gradient(to right,#333,#67B26F);
+    background: linear-gradient(to right, #333,#4ca2cd);border:none">
+        <div class="card-body">
+            <div class="container text-center">
+                <img class="profile" th:src="@{/design-image/contact-image.jpg}"/>
+
+                <h1 class="text-center mt-3  font-italic  text-white">Start Adding Your Contact In
+                    Your Cloud..</h1>
+                <a href="#"
+                   class="btn btn-primary btn-block"
+                   th:href="@{/user/add-contact}"> <span
+                        class="nav-text"> AddContact </span>
+                </a>
+                <hr/>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" th:href="@{/css/user/user_dashboard.css}"/>
+</section>
+</body>
+</html>

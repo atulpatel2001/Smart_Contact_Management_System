@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{_layout::Layout(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+
+	<section>
+<div class="container">
+      <div class="wrapper">
+        <div class="title"><span>Login</span></div>
+        <div th:if="${param.error}" class="alert alert-danger">
+                     Invalid UserName or Password
+        </div>
+        <div th:if="${param.logout}" class="alert alert-success">
+                    You have been logged out!!
+        </div>
+          <div th:if="${param.change}" class="alert alert-success">
+              <p th:text="${param.change}"></p>
+          </div>
+
+        <form method="post" th:action="@{/doLogin}">
+          <div class="row">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Email" name="username" required>
+          </div>
+          <div class="row">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" name="password" required>
+          </div>
+          <div class="pass"><a href="#" th:href="@{/forgot-password}">Forgot password?</a></div>
+          <div class="row button">
+            <input type="submit" value="Login">
+          </div>
+          <div class="signup-link">Not a member? <a href="/signup">Signup now</a></div>
+        </form>
+      </div>
+    </div>
+		
+	</section>
+
+	<link rel="stylesheet" th:href="@{/css/signin.css}" />
+
+</body>
+</html>

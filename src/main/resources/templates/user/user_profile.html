@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/_layout::Layout(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+	<section>
+		<header class="ScriptHeader">
+			<div class="rt-container">
+				<div class="col-rt-12">
+					<div class="rt-heading">
+						<h1>User Profile</h1>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<section>
+			<div class="rt-container">
+				<div class="col-rt-12">
+					<div class="Scriptcontent">
+
+						<!-- Student Profile -->
+						<div class="contact-profile py-4">
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-4">
+										<div class="card shadow-sm">
+											<div class="card-header bg-transparent text-center">
+												<img class="profile_img" alt="contact profile" th:src="@{'/user_image/'+${user.profileUrl}}">
+												<h3 th:text="${#strings.toUpperCase(user.name)}"></h3>
+											</div>
+											<div class="card-body">
+												<p class="mb-0">
+													<strong class="pr-1">USER ID:</strong>USER<span th:text="${user.id}"></span>
+												</p>
+												<p class="mb-0">
+													<strong class="pr-1">USER NAME:</strong><span th:text="${user.name}"
+														></span>
+												</p>
+												<p class="mb-0">
+													<strong class="pr-1">ROLE:</strong><span th:text="${user.role}"></span>
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-8">
+										<div class="card shadow-sm">
+											<div class="card-header bg-transparent border-0">
+												<h3 class="mb-0">
+													<!-- <i class="far fa-clone pr-1"></i> -->
+													General Information
+												</h3>
+											</div>
+											<div class="card-body pt-0">
+												<table class="table table-bordered">
+													<tr>
+														<th width="30%">EMAIL ID</th>
+														<td width="4%">:</td>
+														<td th:text="${#strings.toUpperCase(user.email)}"></td>
+													</tr>
+													<tr>
+														<th width="30%">IS-ACTIVE</th>
+														<td width="4%">:</td>
+														<td th:text="${#strings.toUpperCase(user.isActive)}"></td>
+													</tr>
+													<tr>
+														<th width="30%">USER-CONTACTS</th>
+														<td width="4%">:</td>
+														<td ><a th:href="@{/user/show-contact/0}">CONTACTS</a></td>
+													</tr>
+													<tr>
+														<th width="30%">USER</th>
+														<td width="2%">:</td>
+														<td><button type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
+															UPDATE
+														</button></td>
+
+													</tr>
+
+												</table>
+											</div>
+										</div>
+										<div style="height: 26px"></div>
+										<div class="card shadow-sm" >
+											<div class="card-header bg-transparent border-0">
+												<h3 class="mb-0">
+													<!-- <i class="far fa-clone pr-1"></i> -->
+													Other Information
+												</h3>
+											</div>
+											<div class="card-body pt-0">
+												<p th:utext="${user.about}"></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- partial -->
+					</div>
+				</div>
+
+			</div>
+
+
+			<div class="modal fade text-white"  id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content" style="background: -webkit-linear-gradient(to right,#333,#67B26F); background: linear-gradient(to right, #333,#4ca2cd);">
+						<div class="modal-header">
+							<h5 class="modal-title " id="exampleModalLongTitle">User-Profile</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body" >
+							<form th:action="@{/user/update-user-data}" method="POST" enctype="multipart/form-data">
+								<table class="table">
+									<tr>
+										<td>Id :</td>
+										<td th:text="${'USER'+user.id}"></td>
+									</tr>
+
+									<input type="hidden" th:value="${user.id}" name="id"/>
+									<tr>
+										<td>Name :</td>
+										<td><input type="text" class="form-control"  name="name" th:value="${user.name}"></td>
+
+									</tr>
+									<tr>
+										<td>Email :</td>
+										<td><input type="email" class="form-control"  name="email" th:value="${user.email}"></td>
+
+									</tr>
+
+									<tr>
+										<td>About :</td>
+										<td>
+                                                <textarea rows="3" class="form-control" name="about" th:text="${user.about}">
+                                                </textarea>
+										</td>
+
+									</tr>
+
+									<tr>
+										<td>Profile:</td>
+										<td><input class="form-control" type="file" name="profile"></td>
+									</tr>
+									<!-- image -->
+									<div class="container text-center text-white">
+										<img id="myImage" class="mt-2 mb-2" style="  width: 150px;height: 150px;object-fit: cover; margin: 10px auto;border: 10px solid #ccc;border-radius: 50%;"
+											 th:src="@{'/user_image/'+${user.profileUrl}}" alt="Image"/>
+									</div>
+
+								</table>
+
+								<div class="container text-center">
+									<button type="submit" class="btn btn-success">Save</button>
+
+								</div>
+
+							</form>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</section>
+		<script>
+			function showImage() {
+				var image = document.getElementById("myImage");
+				image.style.display = "block";
+
+				var btn=document.getElementById('btnID')
+
+                btn.style.display = "none";
+			}
+		</script>
+		<link rel="stylesheet" th:href="@{/css/user/user_profile.css}"/>
+	</section>
+</body>
+</html>

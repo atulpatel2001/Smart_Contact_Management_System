@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="Layout(content)">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+<link rel="stylesheet" th:href="@{/css/user/user_layout.css}" />
+<link rel="stylesheet" th:href="@{/css/user/dashboard_slidebar.css}" />
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet"><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+<title th:text="${title}">Base</title>
+</head>
+<body>
+	<section>
+		<nav class=" fixed-top navbar navbar-expand-lg navbar-dark bg-all">
+			<a class="navbar-brand" href="#">SmartContactManager</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse " id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a class="nav-link" href="#"
+						th:href="@{/user/index}">HOME <span class="sr-only">(current)</span></a>
+					<li class="nav-item active"><a class="nav-link "><span
+							th:text="${#strings.toUpperCase(user.name)}" style="width: bold"></span></a>
+					</li>
+					<li class="nav-item active"><a class="nav-link "
+						th:href="@{/logout}">LOGOUT</a></li>
+				</ul>
+
+			</div>
+		</nav>
+		<!-- End navBar -->
+
+		<!--  Slide Bar -->
+		<div class="area">
+
+			<div class="container" th:if="${session.message}">
+				<div th:classappend="${'alert-'+session.message.typeOfMessage}" class="alert mr-3 text-center" role="alert" ><span th:text="${session.message.content}">
+				</span>
+				</div>
+				<th:block th:text="${@sessionHelper.removeAttributeFromSession('message')}"></th:block>
+			</div>
+			<div th:replace="${content}" class="content"></div>
+
+		</div>
+		<nav class="main-menu">
+			<ul>
+				<li><a href="#" th:href="@{/user/index}"> <i
+						class="fa fa-home fa-x icon-cog"></i> <span class="nav-text">
+							Home </span>
+				</a></li>
+				<li class="has-subnav"><a href="#"
+					th:href="@{/user/add-contact}"> <i
+						class="fa fa-file-signature fa-x icon-cog"></i> <span
+						class="nav-text"> AddContact </span>
+				</a></li>
+				<li class="has-subnav"><a href="#" th:href="@{/user/show-contact/0}"> <i
+						class="fa fa-camera-retro fa-x icon-cog"></i> <span
+						class="nav-text"> ShowContact </span>
+				</a></li>
+				<li><a href="#" th:href="@{/user/profile}"> <i class="fa fa-user fa-x icon-cog"></i> <span
+						class="nav-text">Your Profile </span>
+				</a></li>
+				<li class="has-subnav"><a href="#" th:href="@{/user/download-contact}"> <i
+						class="fa fa-download fa-x icon-cog"></i> <span class="nav-text">
+							Download Contacts </span>
+				</a></li>
+				<li><a href="#" th:href="@{/user/setting}"> <i class="fa fa-cogs fa-x icon-cog"></i> <span
+						class="nav-text"> Setting </span>
+				</a></li>
+				<li><a href="#" th:href="@{/user/paytm-page}"> <i class="fa fa-map-marker fa-x icon-cog"></i>
+						<span class="nav-text">Paytm App</span>
+				</a></li>
+				<li><a href="#" th:href="@{/user/razor-pay}"> <i class="fa fa-info fa-x icon-cog"></i> <span
+						class="nav-text"> Razor Pay</span>
+				</a></li>
+
+			</ul>
+
+			<ul class="logout">
+				<li><a th:href="@{/logout}"> <i
+						class="fa fa-power-off fa-x icon-cog"></i> <span class="nav-text">
+							Logout </span>
+				</a></li>
+			</ul>
+		</nav>
+
+
+
+	</section>
+
+
+
+	<!-- Optional JavaScript -->
+<!--	<script type="application/javascript" src="{HOST}/merchantpgpui/checkoutjs/merchants/{MID}.js" onload="onScriptLoad();" crossorigin="anonymous"></script>-->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	
+<script th:src="@{/javascript/script.js}"></script>
+
+
+<!--	 jQuery first, then Popper.js, then Bootstrap JS -->
+<!--	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>-->
+
+	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+		<script>
+
+		function deleteContact(cId){
+			swal({
+				  title: "Are you sure?",
+				  text: "Once deleted, you will not be able to recover this Contact!",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((willDelete) => {
+				  if (willDelete) {
+					  window.location="/user/"+cId+"/delete-contact";
+					  
+				    swal("Your Contact has been deleted!", {
+				      icon: "success",
+				    });
+				  } else {
+				    swal("Your Contact is safe!");
+				  }
+				});
+		}
+		
+		</script>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+</html>

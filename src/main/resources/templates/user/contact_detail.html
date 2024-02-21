@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{/user/_layout::Layout(~{::body})}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+	<section>
+		<header class="ScriptHeader">
+			<div class="rt-container">
+				<div class="col-rt-12">
+					<div class="rt-heading">
+						<h1>Contact Detail</h1>
+						<p style="width: bolder; font-style: italic;">Every new friend
+							is a new adventure Let's get connected.</p>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<section>
+			<div class="rt-container" th:if="${contact}">
+				<div class="col-rt-12">
+					<div class="Scriptcontent">
+
+						<!-- Student Profile -->
+						<div class="contact-profile py-4">
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-4">
+										<div class="card shadow-sm">
+											<div class="card-header bg-transparent text-center">
+												<img class="profile_img"
+													th:src="@{'/contact_image/'+${contact.imageUrl}}"
+													alt="contact profile">
+												<h3 th:text="${contact.name}"></h3>
+											</div>
+											<div class="card-body">
+												<p class="mb-0">
+													<strong class="pr-1">Contact ID:</strong><span
+														th:text="${'SCM2023'+contact.cId}"></span>
+												</p>
+												<p class="mb-0">
+													<strong class="pr-1">Friend Name:</strong><span
+														th:text="${contact.user.name}"></span>
+												</p>
+												<p class="mb-0">
+													<strong class="pr-1">Section:</strong>A
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-8">
+										<div class="card shadow-sm">
+											<div class="card-header bg-transparent border-0">
+												<h3 class="mb-0">
+													<!-- <i class="far fa-clone pr-1"></i> -->
+													General Information
+												</h3>
+											</div>
+											<div class="card-body pt-0">
+												<table class="table table-bordered">
+													<tr>
+														<th width="30%">NickName</th>
+														<td width="2%">:</td>
+														<td th:text="${contact.nickName}"></td>
+													</tr>
+													<tr>
+														<th width="30%">Email Id</th>
+														<td width="2%">:</td>
+														<td th:text="${contact.email}"></td>
+													</tr>
+													<tr>
+														<th width="30%">Phone Number</th>
+														<td width="2%">:</td>
+														<td th:text="${contact.phoneNumber}"></td>
+
+													</tr>
+													<tr>
+														<th width="30%">Work</th>
+														<td width="2%">:</td>
+														<td th:text="${contact.work}"></td>
+
+													</tr>
+
+												</table>
+											</div>
+										</div>
+										<div style="height: 26px"></div>
+										<div class="card shadow-sm">
+											<div class="card-header bg-transparent border-0">
+												<h3 class="mb-0">
+													<!-- <i class="far fa-clone pr-1"></i> -->
+													Other Information
+												</h3>
+											</div>
+											<div class="card-body pt-0">
+												<p th:utext="${contact.description}"></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- partial -->
+						<div class="container d-flex justify-content-center">
+							<form th:action="@{'/user/'+${contact.cId}+'/update-contact'}"
+								method="post">
+								<button type="submit" href="#" class="btn btn-success mr-2">Update</button>
+							</form>
+							<a href="#" th:onclick="deleteContact(/*[[${contact.cId}]]*/)"
+								class="btn btn-danger  mr-2  ms-2 text-white text-center">Delete</a>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<h1 th:unless="${contact}"
+				class="text-center p-3 bg-danger text-white mr-5">you don't
+				have permission to see this contact...</h1>
+
+		</section>
+
+		<link rel="stylesheet" th:href="@{/css/user/contact_detail.css}" />
+	</section>
+</body>
+</html>
